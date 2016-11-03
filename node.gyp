@@ -448,7 +448,7 @@
             'src/node_win32_etw_provider.cc',
             'src/node_dtrace.cc',
             'tools/msvs/genfiles/node_etw_provider.h',
-            'tools/msvs/genfiles/node_etw_provider.rc',
+            # 'tools/msvs/genfiles/node_etw_provider.rc',
           ]
         } ],
         [ 'node_use_perfctr=="true"', {
@@ -459,7 +459,7 @@
             'src/node_win32_perfctr_provider.cc',
             'src/node_counters.cc',
             'src/node_counters.h',
-            'tools/msvs/genfiles/node_perfctr_provider.rc',
+            # 'tools/msvs/genfiles/node_perfctr_provider.rc',
           ]
         } ],
         [ 'node_no_browser_globals=="true"', {
@@ -497,7 +497,7 @@
         [ 'OS=="win"', {
           'sources': [
             'src/backtrace_win32.cc',
-            'src/res/node.rc',
+            # 'src/res/node.rc',
           ],
           'defines!': [
             'NODE_PLATFORM="win"',

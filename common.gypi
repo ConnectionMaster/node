@@ -191,6 +191,14 @@
         'WarnAsError': 'false',
       },
       'VCLibrarianTool': {
+        'conditions': [
+          ['target_arch=="ia32"', {
+            'TargetMachine' : 1, # /MACHINE:X86
+          }],
+          ['target_arch=="x64"', {
+            'TargetMachine' : 17, # /MACHINE:AMD64
+          }],
+        ],
       },
       'VCLinkerTool': {
         'conditions': [
