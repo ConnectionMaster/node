@@ -229,6 +229,10 @@
       },
     },
     'msvs_disabled_warnings': [4351, 4355, 4800],
+    'msvs_configuration_attributes': {
+      'OutputDirectory': '<(DEPTH)/<(CONFIGURATION_NAME)/<(target_arch)',
+      'IntermediateDirectory': '$(OutDir)/obj/>(_target_name)',
+    },
     'conditions': [
       ['asan == 1 and OS != "mac"', {
         'cflags+': [

@@ -989,8 +989,8 @@
         #       present in VS 2003 and earlier.
         'msvs_disabled_warnings': [4351],
         'msvs_configuration_attributes': {
-          'OutputDirectory': '<(DEPTH)\\build\\$(ConfigurationName)',
-          'IntermediateDirectory': '$(OutDir)\\obj\\$(ProjectName)',
+          'OutputDirectory': '<(DEPTH)/<(CONFIGURATION_NAME)/<(target_arch)',
+          'IntermediateDirectory': '$(OutDir)/obj/>(_target_name)',
           'CharacterSet': '1',
         },
       }],
