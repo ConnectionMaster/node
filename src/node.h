@@ -211,6 +211,11 @@ NODE_EXTERN void EmitBeforeExit(Environment* env);
 NODE_EXTERN int EmitExit(Environment* env);
 NODE_EXTERN void RunAtExit(Environment* env);
 
+/* Called to populate embedded native modules
+ */
+typedef void (*embedded_module_loader)(v8::Isolate*, v8::Local<v8::Object>);
+NODE_EXTERN void EmbeddedModuleLoader(embedded_module_loader loader);
+
 /* Converts a unixtime to V8 Date */
 #define NODE_UNIXTIME_V8(t) v8::Date::New(v8::Isolate::GetCurrent(),          \
     1000 * static_cast<double>(t))

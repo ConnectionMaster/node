@@ -159,6 +159,7 @@ static node_module* modpending;
 static node_module* modlist_builtin;
 static node_module* modlist_linked;
 static node_module* modlist_addon;
+static embedded_module_loader embedded_loader = nullptr;
 
 #if defined(NODE_HAVE_I18N_SUPPORT)
 // Path to ICU data (for i18n / Intl)
@@ -2596,6 +2597,12 @@ static void Binding(const FunctionCallbackInfo<Value>& args) {
     exports = Object::New(env->isolate());
     DefineJavaScript(env, exports);
     cache->Set(module, exports);
+  } else if (!strcmp(*module_v, "embedded")) {
+    exports = Object::New(env->isolate());
+    if (embedded_loader != nullptr) {
+        (*embedded_loader)(env->isolate(), exports);
+    }
+    cache->Set(module, exports);
   } else {
     char errmsg[1024];
     snprintf(errmsg,
@@ -4368,6 +4375,9 @@ void FreeEnvironment(Environment* env) {
   delete env;
 }
 
+void EmbeddedModuleLoader(embedded_module_loader loader) {
+  embedded_loader = loader;
+}
 
 // Entry point for new node instances, also called directly for the main
 // node instance.
