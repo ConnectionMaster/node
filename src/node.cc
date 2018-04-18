@@ -191,7 +191,7 @@ std::string icu_data_dir;  // NOLINT(runtime/string)
 #endif
 
 // N-API is in experimental state, disabled by default.
-bool load_napi_modules = false;
+bool load_napi_modules = true;
 
 // used by C++ modules as well
 bool no_deprecation = false;
